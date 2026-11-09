@@ -44,4 +44,13 @@ public class Category extends CatalogComponent {
 
         return total;
     }
+
+    @Override
+    public void accept(CatalogVisitor visitor) {
+        visitor.visit(this);
+
+        for (CatalogComponent child : children) {
+            child.accept(visitor);
+        }
+    }
 }

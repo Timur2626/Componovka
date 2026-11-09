@@ -1,7 +1,6 @@
 public class Main {
 
     public static void main(String[] args) {
-        // Создаём категории.
         CatalogComponent catalog =
                 new Category("Каталог хоккейной экипировки");
 
@@ -45,21 +44,24 @@ public class Main {
         catalog.add(protection);
         catalog.add(skates);
 
-        System.out.println("ВЕСЬ КАТАЛОГ");
-        showCatalog(catalog);
+        System.out.println("КАТАЛОГ");
+        catalog.print();
 
-        System.out.println("\nТОЛЬКО ЗАЩИТА");
-        showCatalog(protection);
+        System.out.println("\nОТЧЁТ ПО ВСЕМУ КАТАЛОГУ");
+        showReport(catalog);
 
-        System.out.println("\nОДИН ТОВАР");
-        showCatalog(helmet);
+        System.out.println("\nОТЧЁТ ПО РАЗДЕЛУ «ЗАЩИТА»");
+        showReport(protection);
+
+        System.out.println("\nОТЧЁТ ПО ОДНОМУ ТОВАРУ");
+        showReport(helmet);
     }
 
-    private static void showCatalog(CatalogComponent component) {
-        component.print();
+    private static void showReport(CatalogComponent component) {
+        CatalogReportVisitor visitor = new CatalogReportVisitor();
 
-        System.out.println(
-                "Товарных позиций: " + component.getProductCount()
-        );
+        component.accept(visitor);
+
+        visitor.printReport();
     }
 }

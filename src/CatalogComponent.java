@@ -18,6 +18,8 @@ public abstract class CatalogComponent {
 
     public abstract int getProductCount();
 
+    public abstract void accept(CatalogVisitor visitor);
+
     public void add(CatalogComponent component) {
         throw new UnsupportedOperationException(
                 "В товар нельзя добавлять дочерние элементы"

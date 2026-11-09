@@ -30,4 +30,9 @@ public class Product extends CatalogComponent {
     public int getProductCount() {
         return 1;
     }
+
+    @Override
+    public void accept(CatalogVisitor visitor) {
+        visitor.visit(this);
+    }
 }
