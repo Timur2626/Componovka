@@ -10,19 +10,12 @@ public abstract class CatalogComponent {
         return name;
     }
 
-    public void print() {
-        print("");
-    }
-
-    public abstract void print(String indent);
-
-    public abstract int getProductCount();
-
+    // Принять посетителя.
     public abstract void accept(CatalogVisitor visitor);
 
     public void add(CatalogComponent component) {
         throw new UnsupportedOperationException(
-                "В товар нельзя добавлять дочерние элементы"
+                "В товар нельзя добавлять элементы"
         );
     }
 

@@ -25,32 +25,12 @@ public class Category extends CatalogComponent {
         return children.get(index);
     }
 
-    @Override
-    public void print(String indent) {
-        System.out.println(indent + "+ " + getName());
-
-        for (CatalogComponent child : children) {
-            child.print(indent + "    ");
-        }
-    }
-
-    @Override
-    public int getProductCount() {
-        int total = 0;
-
-        for (CatalogComponent child : children) {
-            total += child.getProductCount();
-        }
-
-        return total;
+    public int getChildCount() {
+        return children.size();
     }
 
     @Override
     public void accept(CatalogVisitor visitor) {
         visitor.visit(this);
-
-        for (CatalogComponent child : children) {
-            child.accept(visitor);
-        }
     }
 }

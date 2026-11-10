@@ -19,19 +19,6 @@ public class Product extends CatalogComponent {
     }
 
     @Override
-    public void print(String indent) {
-        System.out.println(
-                indent + "- " + getName()
-                        + " — " + price + " руб."
-        );
-    }
-
-    @Override
-    public int getProductCount() {
-        return 1;
-    }
-
-    @Override
     public void accept(CatalogVisitor visitor) {
         visitor.visit(this);
     }

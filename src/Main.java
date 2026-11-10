@@ -44,24 +44,10 @@ public class Main {
         catalog.add(protection);
         catalog.add(skates);
 
-        System.out.println("КАТАЛОГ");
-        catalog.print();
+        XmlVisitor visitor = new XmlVisitor();
 
-        System.out.println("\nОТЧЁТ ПО ВСЕМУ КАТАЛОГУ");
-        showReport(catalog);
+        catalog.accept(visitor);
 
-        System.out.println("\nОТЧЁТ ПО РАЗДЕЛУ «ЗАЩИТА»");
-        showReport(protection);
-
-        System.out.println("\nОТЧЁТ ПО ОДНОМУ ТОВАРУ");
-        showReport(helmet);
-    }
-
-    private static void showReport(CatalogComponent component) {
-        CatalogReportVisitor visitor = new CatalogReportVisitor();
-
-        component.accept(visitor);
-
-        visitor.printReport();
+        System.out.println(visitor.getXml());
     }
 }
